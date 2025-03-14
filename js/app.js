@@ -38,7 +38,10 @@ function aggiungi(opzione) {
     }
   }
 }
-function stampa() {
+async function stampa() {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(button => button.style.display = 'none');
   const element = document.body;
-  html2pdf().from(element).save('curriculum.pdf');
+  await html2pdf().from(element).save('curriculum.pdf');
+  await buttons.forEach(button => button.style.display = 'block');
 }
